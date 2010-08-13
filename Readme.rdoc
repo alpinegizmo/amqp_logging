@@ -20,16 +20,6 @@ With Rails 3 you will need to modify this a bit, as config.log_path no longer ha
 
 	config.logger = AMQPLogging::Logger.new(config.paths.log.to_a.first, logging_config)
 
-==Formatting
-
-You can pass in a formatter if you want to alter all of the log lines. For example, if you want syslog compatible logging:
-
-	syslog_formatter = lambda do |msg|
-	  LogjamLogger::Formatter.new.format(msg)
-	end
-
-	config.logger = AMQPLogging::Logger.new(config.paths.log.to_a.first, :formatter => syslog_formatter)
-
 ==Routing Keys
 
 You can set the routing key with a string or use a generator that respondes to call,

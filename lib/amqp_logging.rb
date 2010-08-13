@@ -38,7 +38,6 @@ module AMQPLogging
 
     def write(msg)
       begin
-        msg = configuration[:formatter].call(msg) if configuration[:formatter]
         if !@paused || @paused <= RETRY_AFTER.ago
           routing_key = configuration[:routing_key].respond_to?(:call) ? configuration[:routing_key].call(msg).to_s : configuration[:routing_key]
           exchange.publish(msg, :key => routing_key)
