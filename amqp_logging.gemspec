@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name    = "amqp_logging"
-  s.version = "0.3.0"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = ">= 1.3.1"
   s.authors                   = ["Pascal Friederich"]
@@ -25,4 +25,3 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("activesupport",         [">= 2.3.0"])
   s.add_development_dependency("mocha",             [">= 0"])
 end
-
