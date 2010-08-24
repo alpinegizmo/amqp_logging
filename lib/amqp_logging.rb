@@ -76,7 +76,7 @@ module AMQPLogging
       end
 
       def bunny
-        @bunny ||= Bunny.new(:host => configuration[:host])
+        @bunny ||= Bunny.new(configuration)
         @bunny
       end
   end
