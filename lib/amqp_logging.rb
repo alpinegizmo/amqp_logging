@@ -43,6 +43,7 @@ module AMQPLogging
           exchange.publish(msg, :key => routing_key)
         end
       rescue Exception => exception
+        puts exception.inspect
         pause_amqp_logging(exception)
       ensure
         @fallback_logdev.write(msg)
@@ -72,7 +73,7 @@ module AMQPLogging
 
       def exchange
         bunny.start unless bunny.connected?
-        @exchange ||= bunny.exchange(configuration[:exchange], :type => :topic)
+        @exchange ||= bunny.exchange(configuration[:exchange], :type => :topic, :durable => true, :auto_delete => false)
       end
 
       def bunny
